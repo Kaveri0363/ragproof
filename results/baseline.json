@@ -1,0 +1,675 @@
+{
+  "name": "default",
+  "k": 3,
+  "dataset_size": 52,
+  "corpus_size": 18,
+  "systems": [
+    {
+      "name": "bm25-baseline",
+      "config": {
+        "name": "bm25-baseline",
+        "chunking": {
+          "strategy": "sentence",
+          "size": 120,
+          "overlap": 30
+        },
+        "retriever": {
+          "kind": "bm25"
+        },
+        "reranker": {
+          "kind": "none"
+        },
+        "generator": {
+          "kind": "extractive",
+          "max_sentences": 2,
+          "abstain_threshold": 0.25
+        },
+        "judge": {
+          "kind": "overlap"
+        },
+        "notes": "sparse lexical retrieval, sentence-aware chunks"
+      },
+      "metrics": {
+        "abstain_accuracy": 0.6,
+        "answer_f1": 0.3782,
+        "answer_rate": 0.9787,
+        "citation_precision": 1.0,
+        "groundedness": 0.9991,
+        "hit_rate_at_k": 1.0,
+        "latency_ms": 0.344,
+        "mrr": 0.9894,
+        "ndcg_at_k": 0.9592,
+        "precision_at_k": 0.4858,
+        "recall_at_k": 0.9574,
+        "questions": 52
+      },
+      "by_category": {
+        "lookup": {
+          "answer_f1": 0.396,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3388,
+          "mrr": 1.0,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 0.4649,
+          "recall_at_k": 1.0,
+          "questions": 19
+        },
+        "multi-doc": {
+          "answer_f1": 0.368,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 0.9928,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3533,
+          "mrr": 1.0,
+          "ndcg_at_k": 0.7421,
+          "precision_at_k": 0.6667,
+          "recall_at_k": 0.6667,
+          "questions": 6
+        },
+        "paraphrase": {
+          "answer_f1": 0.3075,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3351,
+          "mrr": 1.0,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 0.4259,
+          "recall_at_k": 1.0,
+          "questions": 9
+        },
+        "reasoning": {
+          "answer_f1": 0.4082,
+          "answer_rate": 0.9231,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3515,
+          "mrr": 0.9615,
+          "ndcg_at_k": 0.9716,
+          "precision_at_k": 0.4744,
+          "recall_at_k": 1.0,
+          "questions": 13
+        },
+        "unanswerable": {
+          "abstain_accuracy": 0.6,
+          "latency_ms": 0.3486,
+          "questions": 5
+        }
+      },
+      "index_ms": 2.59,
+      "chunk_stats": {
+        "documents": 18,
+        "chunks": 36,
+        "mean_chunk_tokens": 99.7,
+        "max_chunk_tokens": 122
+      }
+    },
+    {
+      "name": "bm25-small-chunks",
+      "config": {
+        "name": "bm25-small-chunks",
+        "chunking": {
+          "strategy": "sentence",
+          "size": 60,
+          "overlap": 15
+        },
+        "retriever": {
+          "kind": "bm25"
+        },
+        "reranker": {
+          "kind": "none"
+        },
+        "generator": {
+          "kind": "extractive",
+          "max_sentences": 2,
+          "abstain_threshold": 0.25
+        },
+        "judge": {
+          "kind": "overlap"
+        },
+        "notes": "smaller chunks \u2014 higher precision, more boundary loss"
+      },
+      "metrics": {
+        "abstain_accuracy": 0.6,
+        "answer_f1": 0.3832,
+        "answer_rate": 0.9787,
+        "citation_precision": 1.0,
+        "groundedness": 0.9984,
+        "hit_rate_at_k": 0.9787,
+        "latency_ms": 0.2714,
+        "mrr": 0.9574,
+        "ndcg_at_k": 0.9219,
+        "precision_at_k": 0.6844,
+        "recall_at_k": 0.9255,
+        "questions": 52
+      },
+      "by_category": {
+        "lookup": {
+          "answer_f1": 0.3951,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 0.9474,
+          "latency_ms": 0.2678,
+          "mrr": 0.9211,
+          "ndcg_at_k": 0.9279,
+          "precision_at_k": 0.6491,
+          "recall_at_k": 0.9474,
+          "questions": 19
+        },
+        "multi-doc": {
+          "answer_f1": 0.364,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.2892,
+          "mrr": 1.0,
+          "ndcg_at_k": 0.6776,
+          "precision_at_k": 0.9167,
+          "recall_at_k": 0.5833,
+          "questions": 6
+        },
+        "paraphrase": {
+          "answer_f1": 0.3629,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 0.9921,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.2613,
+          "mrr": 1.0,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 0.6296,
+          "recall_at_k": 1.0,
+          "questions": 9
+        },
+        "reasoning": {
+          "answer_f1": 0.3892,
+          "answer_rate": 0.9231,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.2749,
+          "mrr": 0.9615,
+          "ndcg_at_k": 0.9716,
+          "precision_at_k": 0.6667,
+          "recall_at_k": 1.0,
+          "questions": 13
+        },
+        "unanswerable": {
+          "abstain_accuracy": 0.6,
+          "latency_ms": 0.2726,
+          "questions": 5
+        }
+      },
+      "index_ms": 2.62,
+      "chunk_stats": {
+        "documents": 18,
+        "chunks": 75,
+        "mean_chunk_tokens": 50.6,
+        "max_chunk_tokens": 62
+      }
+    },
+    {
+      "name": "bm25-fixed-chunks",
+      "config": {
+        "name": "bm25-fixed-chunks",
+        "chunking": {
+          "strategy": "fixed",
+          "size": 120,
+          "overlap": 30
+        },
+        "retriever": {
+          "kind": "bm25"
+        },
+        "reranker": {
+          "kind": "none"
+        },
+        "generator": {
+          "kind": "extractive",
+          "max_sentences": 2,
+          "abstain_threshold": 0.25
+        },
+        "judge": {
+          "kind": "overlap"
+        },
+        "notes": "same size, naive windowing \u2014 isolates the cost of cutting sentences"
+      },
+      "metrics": {
+        "abstain_accuracy": 0.6,
+        "answer_f1": 0.3669,
+        "answer_rate": 0.9787,
+        "citation_precision": 1.0,
+        "groundedness": 0.9992,
+        "hit_rate_at_k": 1.0,
+        "latency_ms": 0.3606,
+        "mrr": 0.9894,
+        "ndcg_at_k": 0.9592,
+        "precision_at_k": 0.4929,
+        "recall_at_k": 0.9574,
+        "questions": 52
+      },
+      "by_category": {
+        "lookup": {
+          "answer_f1": 0.3978,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3566,
+          "mrr": 1.0,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 0.4825,
+          "recall_at_k": 1.0,
+          "questions": 19
+        },
+        "multi-doc": {
+          "answer_f1": 0.3559,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 0.9943,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.4232,
+          "mrr": 1.0,
+          "ndcg_at_k": 0.7421,
+          "precision_at_k": 0.6667,
+          "recall_at_k": 0.6667,
+          "questions": 6
+        },
+        "paraphrase": {
+          "answer_f1": 0.3075,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3477,
+          "mrr": 1.0,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 0.4259,
+          "recall_at_k": 1.0,
+          "questions": 9
+        },
+        "reasoning": {
+          "answer_f1": 0.3681,
+          "answer_rate": 0.9231,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.3523,
+          "mrr": 0.9615,
+          "ndcg_at_k": 0.9716,
+          "precision_at_k": 0.4744,
+          "recall_at_k": 1.0,
+          "questions": 13
+        },
+        "unanswerable": {
+          "abstain_accuracy": 0.6,
+          "latency_ms": 0.3458,
+          "questions": 5
+        }
+      },
+      "index_ms": 2.38,
+      "chunk_stats": {
+        "documents": 18,
+        "chunks": 36,
+        "mean_chunk_tokens": 102.7,
+        "max_chunk_tokens": 124
+      }
+    },
+    {
+      "name": "dense-hashing",
+      "config": {
+        "name": "dense-hashing",
+        "chunking": {
+          "strategy": "sentence",
+          "size": 120,
+          "overlap": 30
+        },
+        "retriever": {
+          "kind": "dense",
+          "embedder": {
+            "kind": "hashing",
+            "dim": 1024,
+            "bigrams": true
+          }
+        },
+        "reranker": {
+          "kind": "none"
+        },
+        "generator": {
+          "kind": "extractive",
+          "max_sentences": 2,
+          "abstain_threshold": 0.25
+        },
+        "judge": {
+          "kind": "overlap"
+        },
+        "notes": "deterministic hashed TF-IDF embeddings, cosine similarity"
+      },
+      "metrics": {
+        "abstain_accuracy": 0.6,
+        "answer_f1": 0.3948,
+        "answer_rate": 0.9149,
+        "citation_precision": 1.0,
+        "groundedness": 0.999,
+        "hit_rate_at_k": 0.9149,
+        "latency_ms": 0.4654,
+        "mrr": 0.8156,
+        "ndcg_at_k": 0.792,
+        "precision_at_k": 0.3972,
+        "recall_at_k": 0.8511,
+        "questions": 52
+      },
+      "by_category": {
+        "lookup": {
+          "answer_f1": 0.3888,
+          "answer_rate": 0.9474,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 0.9474,
+          "latency_ms": 0.4699,
+          "mrr": 0.8947,
+          "ndcg_at_k": 0.9085,
+          "precision_at_k": 0.4035,
+          "recall_at_k": 0.9474,
+          "questions": 19
+        },
+        "multi-doc": {
+          "answer_f1": 0.4001,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 0.9928,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.4663,
+          "mrr": 1.0,
+          "ndcg_at_k": 0.6131,
+          "precision_at_k": 0.4444,
+          "recall_at_k": 0.5,
+          "questions": 6
+        },
+        "paraphrase": {
+          "answer_f1": 0.3302,
+          "answer_rate": 0.7778,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 0.7778,
+          "latency_ms": 0.4432,
+          "mrr": 0.7037,
+          "ndcg_at_k": 0.7222,
+          "precision_at_k": 0.3333,
+          "recall_at_k": 0.7778,
+          "questions": 9
+        },
+        "reasoning": {
+          "answer_f1": 0.4386,
+          "answer_rate": 0.9231,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 0.9231,
+          "latency_ms": 0.4605,
+          "mrr": 0.6923,
+          "ndcg_at_k": 0.7527,
+          "precision_at_k": 0.4102,
+          "recall_at_k": 0.9231,
+          "questions": 13
+        },
+        "unanswerable": {
+          "abstain_accuracy": 0.6,
+          "latency_ms": 0.5002,
+          "questions": 5
+        }
+      },
+      "index_ms": 13.98,
+      "chunk_stats": {
+        "documents": 18,
+        "chunks": 36,
+        "mean_chunk_tokens": 99.7,
+        "max_chunk_tokens": 122
+      }
+    },
+    {
+      "name": "hybrid-rrf",
+      "config": {
+        "name": "hybrid-rrf",
+        "chunking": {
+          "strategy": "sentence",
+          "size": 120,
+          "overlap": 30
+        },
+        "retriever": {
+          "kind": "hybrid",
+          "rrf_k": 60,
+          "retrievers": [
+            {
+              "kind": "bm25"
+            },
+            {
+              "kind": "dense",
+              "embedder": {
+                "kind": "hashing",
+                "dim": 1024
+              }
+            }
+          ]
+        },
+        "reranker": {
+          "kind": "none"
+        },
+        "generator": {
+          "kind": "extractive",
+          "max_sentences": 2,
+          "abstain_threshold": 0.25
+        },
+        "judge": {
+          "kind": "overlap"
+        },
+        "notes": "reciprocal rank fusion of sparse and dense"
+      },
+      "metrics": {
+        "abstain_accuracy": 0.6,
+        "answer_f1": 0.3799,
+        "answer_rate": 0.9787,
+        "citation_precision": 1.0,
+        "groundedness": 0.9991,
+        "hit_rate_at_k": 0.9787,
+        "latency_ms": 0.706,
+        "mrr": 0.9326,
+        "ndcg_at_k": 0.8951,
+        "precision_at_k": 0.4291,
+        "recall_at_k": 0.9149,
+        "questions": 52
+      },
+      "by_category": {
+        "lookup": {
+          "answer_f1": 0.3722,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.7104,
+          "mrr": 0.9474,
+          "ndcg_at_k": 0.9611,
+          "precision_at_k": 0.4386,
+          "recall_at_k": 1.0,
+          "questions": 19
+        },
+        "multi-doc": {
+          "answer_f1": 0.4001,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 0.9928,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.7012,
+          "mrr": 1.0,
+          "ndcg_at_k": 0.6131,
+          "precision_at_k": 0.4444,
+          "recall_at_k": 0.5,
+          "questions": 6
+        },
+        "paraphrase": {
+          "answer_f1": 0.3069,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 0.6916,
+          "mrr": 0.8704,
+          "ndcg_at_k": 0.9034,
+          "precision_at_k": 0.4074,
+          "recall_at_k": 1.0,
+          "questions": 9
+        },
+        "reasoning": {
+          "answer_f1": 0.437,
+          "answer_rate": 0.9231,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 0.9231,
+          "latency_ms": 0.7288,
+          "mrr": 0.9231,
+          "ndcg_at_k": 0.9231,
+          "precision_at_k": 0.4231,
+          "recall_at_k": 0.9231,
+          "questions": 13
+        },
+        "unanswerable": {
+          "abstain_accuracy": 0.6,
+          "latency_ms": 0.6618,
+          "questions": 5
+        }
+      },
+      "index_ms": 16.69,
+      "chunk_stats": {
+        "documents": 18,
+        "chunks": 36,
+        "mean_chunk_tokens": 99.7,
+        "max_chunk_tokens": 122
+      }
+    },
+    {
+      "name": "hybrid-rrf-reranked",
+      "config": {
+        "name": "hybrid-rrf-reranked",
+        "chunking": {
+          "strategy": "sentence",
+          "size": 120,
+          "overlap": 30
+        },
+        "retriever": {
+          "kind": "hybrid",
+          "rrf_k": 60,
+          "retrievers": [
+            {
+              "kind": "bm25"
+            },
+            {
+              "kind": "dense",
+              "embedder": {
+                "kind": "hashing",
+                "dim": 1024
+              }
+            }
+          ]
+        },
+        "reranker": {
+          "kind": "lexical"
+        },
+        "generator": {
+          "kind": "extractive",
+          "max_sentences": 2,
+          "abstain_threshold": 0.25
+        },
+        "judge": {
+          "kind": "overlap"
+        },
+        "notes": "fusion plus a second-stage reranker over the top 20 candidates"
+      },
+      "metrics": {
+        "abstain_accuracy": 0.6,
+        "answer_f1": 0.3749,
+        "answer_rate": 0.9787,
+        "citation_precision": 1.0,
+        "groundedness": 0.9991,
+        "hit_rate_at_k": 0.9787,
+        "latency_ms": 1.8033,
+        "mrr": 0.9681,
+        "ndcg_at_k": 0.9297,
+        "precision_at_k": 0.461,
+        "recall_at_k": 0.9255,
+        "questions": 52
+      },
+      "by_category": {
+        "lookup": {
+          "answer_f1": 0.3727,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 1.7843,
+          "mrr": 0.9737,
+          "ndcg_at_k": 0.9806,
+          "precision_at_k": 0.4474,
+          "recall_at_k": 1.0,
+          "questions": 19
+        },
+        "multi-doc": {
+          "answer_f1": 0.4001,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 0.9928,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 1.7907,
+          "mrr": 1.0,
+          "ndcg_at_k": 0.6776,
+          "precision_at_k": 0.5833,
+          "recall_at_k": 0.5833,
+          "questions": 6
+        },
+        "paraphrase": {
+          "answer_f1": 0.3075,
+          "answer_rate": 1.0,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 1.0,
+          "latency_ms": 1.8106,
+          "mrr": 1.0,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 0.4444,
+          "recall_at_k": 1.0,
+          "questions": 9
+        },
+        "reasoning": {
+          "answer_f1": 0.4163,
+          "answer_rate": 0.9231,
+          "citation_precision": 1.0,
+          "groundedness": 1.0,
+          "hit_rate_at_k": 0.9231,
+          "latency_ms": 1.8304,
+          "mrr": 0.9231,
+          "ndcg_at_k": 0.9231,
+          "precision_at_k": 0.4359,
+          "recall_at_k": 0.9231,
+          "questions": 13
+        },
+        "unanswerable": {
+          "abstain_accuracy": 0.6,
+          "latency_ms": 1.8072,
+          "questions": 5
+        }
+      },
+      "index_ms": 16.25,
+      "chunk_stats": {
+        "documents": 18,
+        "chunks": 36,
+        "mean_chunk_tokens": 99.7,
+        "max_chunk_tokens": 122
+      }
+    }
+  ]
+}

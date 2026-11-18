@@ -1,0 +1,28 @@
+# One knob, five values. Chunk size is the parameter teams tune by feel;
+# this is what tuning it by measurement looks like.
+
+name: chunking-sweep
+corpus: ../data/corpus
+dataset: ../data/qa.jsonl
+k: 5
+retrieval_depth: 20
+
+defaults:
+  retriever:
+    kind: hybrid
+    retrievers:
+      - { kind: bm25 }
+      - { kind: dense, embedder: { kind: hashing, dim: 1024 } }
+  reranker: { kind: lexical }
+
+systems:
+  - name: chunk-40
+    chunking: { strategy: sentence, size: 40, overlap: 10 }
+  - name: chunk-80
+    chunking: { strategy: sentence, size: 80, overlap: 20 }
+  - name: chunk-120
+    chunking: { strategy: sentence, size: 120, overlap: 30 }
+  - name: chunk-200
+    chunking: { strategy: sentence, size: 200, overlap: 50 }
+  - name: chunk-320
+    chunking: { strategy: sentence, size: 320, overlap: 80 }

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ragproof — chunking-sweep</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fbfbfa; --fg:#1a1a18; --mut:#6b6b66;
+           --line:#e3e3df; --card:#fff; --best:#0b6b53; --bestbg:#e6f4ef; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141413; --fg:#f0efec; --mut:#9a9a94; --line:#2b2b28; --card:#1c1c1a;
+             --best:#6ee7b7; --bestbg:#10322a; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:2.5rem 1.25rem; background:var(--bg); color:var(--fg);
+          font:16px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif; }
+  main { max-width:1040px; margin:0 auto; }
+  h1 { font-size:1.6rem; margin:0 0 .25rem; letter-spacing:-.02em; }
+  .meta { color:var(--mut); font-size:.85rem; margin-bottom:2rem; }
+  .wrap { overflow-x:auto; background:var(--card); border:1px solid var(--line);
+           border-radius:12px; }
+  table { border-collapse:collapse; width:100%; font-size:.9rem; }
+  th,td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--line);
+           white-space:nowrap; }
+  thead th { font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;
+              color:var(--mut); font-weight:600; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom:none; }
+  td.num { font-variant-numeric:tabular-nums; text-align:right; }
+  td.best { color:var(--best); background:var(--bestbg); font-weight:600; }
+  th[scope=row] { font-weight:600; }
+  .cfg { display:block; font-weight:400; font-size:.75rem; color:var(--mut); }
+  code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; }
+</style></head>
+<body><main>
+  <h1>ragproof — chunking-sweep</h1>
+  <p class="meta">18 documents · 52 labelled questions ·
+     k=5 · generated 2026-08-28 12:31 UTC</p>
+  <div class="wrap"><table>
+    <thead><tr><th>System</th><th>Recall@k</th><th>MRR</th><th>nDCG@k</th><th>Precision@k</th><th>Grounded</th><th>Cite prec.</th><th>Answer F1</th><th>Abstain acc.</th><th>Latency (ms)</th></tr></thead>
+    <tbody><tr><th scope="row"><code>chunk-40</code><span class="cfg">hybrid, chunk 40/10 sentence, rerank:lexical</span></th><td class="num best">0.957</td><td class="num">0.958</td><td class="num">0.935</td><td class="num best">0.519</td><td class="num">0.996</td><td class="num best">1.000</td><td class="num">0.365</td><td class="num best">0.600</td><td class="num">1.5</td></tr><tr><th scope="row"><code>chunk-120</code><span class="cfg">hybrid, chunk 120/30 sentence, rerank:lexical</span></th><td class="num">0.936</td><td class="num best">0.968</td><td class="num best">0.936</td><td class="num">0.271</td><td class="num">0.999</td><td class="num best">1.000</td><td class="num">0.376</td><td class="num best">0.600</td><td class="num">2.0</td></tr><tr><th scope="row"><code>chunk-200</code><span class="cfg">hybrid, chunk 200/50 sentence, rerank:lexical</span></th><td class="num">0.936</td><td class="num">0.943</td><td class="num">0.918</td><td class="num">0.210</td><td class="num best">1.000</td><td class="num best">1.000</td><td class="num">0.366</td><td class="num best">0.600</td><td class="num">2.6</td></tr><tr><th scope="row"><code>chunk-320</code><span class="cfg">hybrid, chunk 320/80 sentence, rerank:lexical</span></th><td class="num">0.936</td><td class="num">0.943</td><td class="num">0.918</td><td class="num">0.204</td><td class="num best">1.000</td><td class="num best">1.000</td><td class="num">0.361</td><td class="num best">0.600</td><td class="num">2.5</td></tr><tr><th scope="row"><code>chunk-80</code><span class="cfg">hybrid, chunk 80/20 sentence, rerank:lexical</span></th><td class="num">0.915</td><td class="num">0.947</td><td class="num">0.915</td><td class="num">0.338</td><td class="num best">1.000</td><td class="num best">1.000</td><td class="num best">0.379</td><td class="num best">0.600</td><td class="num">1.8</td></tr></tbody>
+  </table></div>
+</main></body></html>

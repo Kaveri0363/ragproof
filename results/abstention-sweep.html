@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ragproof — abstention-sweep</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fbfbfa; --fg:#1a1a18; --mut:#6b6b66;
+           --line:#e3e3df; --card:#fff; --best:#0b6b53; --bestbg:#e6f4ef; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141413; --fg:#f0efec; --mut:#9a9a94; --line:#2b2b28; --card:#1c1c1a;
+             --best:#6ee7b7; --bestbg:#10322a; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:2.5rem 1.25rem; background:var(--bg); color:var(--fg);
+          font:16px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif; }
+  main { max-width:1040px; margin:0 auto; }
+  h1 { font-size:1.6rem; margin:0 0 .25rem; letter-spacing:-.02em; }
+  .meta { color:var(--mut); font-size:.85rem; margin-bottom:2rem; }
+  .wrap { overflow-x:auto; background:var(--card); border:1px solid var(--line);
+           border-radius:12px; }
+  table { border-collapse:collapse; width:100%; font-size:.9rem; }
+  th,td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--line);
+           white-space:nowrap; }
+  thead th { font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;
+              color:var(--mut); font-weight:600; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom:none; }
+  td.num { font-variant-numeric:tabular-nums; text-align:right; }
+  td.best { color:var(--best); background:var(--bestbg); font-weight:600; }
+  th[scope=row] { font-weight:600; }
+  .cfg { display:block; font-weight:400; font-size:.75rem; color:var(--mut); }
+  code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; }
+</style></head>
+<body><main>
+  <h1>ragproof — abstention-sweep</h1>
+  <p class="meta">18 documents · 52 labelled questions ·
+     k=3 · generated 2026-08-28 12:33 UTC</p>
+  <div class="wrap"><table>
+    <thead><tr><th>System</th><th>Recall@k</th><th>MRR</th><th>nDCG@k</th><th>Precision@k</th><th>Grounded</th><th>Cite prec.</th><th>Answer F1</th><th>Abstain acc.</th><th>Answer rate</th><th>Latency (ms)</th></tr></thead>
+    <tbody><tr><th scope="row"><code>threshold-0.15</code><span class="cfg">bm25, chunk 120/30 sentence</span></th><td class="num best">0.957</td><td class="num best">0.989</td><td class="num best">0.959</td><td class="num best">0.486</td><td class="num best">0.999</td><td class="num best">1.000</td><td class="num">0.371</td><td class="num">0.200</td><td class="num best">1.000</td><td class="num">0.4</td></tr><tr><th scope="row"><code>threshold-0.25</code><span class="cfg">bm25, chunk 120/30 sentence</span></th><td class="num best">0.957</td><td class="num best">0.989</td><td class="num best">0.959</td><td class="num best">0.486</td><td class="num best">0.999</td><td class="num best">1.000</td><td class="num">0.378</td><td class="num">0.600</td><td class="num">0.979</td><td class="num">0.3</td></tr><tr><th scope="row"><code>threshold-0.34</code><span class="cfg">bm25, chunk 120/30 sentence</span></th><td class="num best">0.957</td><td class="num best">0.989</td><td class="num best">0.959</td><td class="num best">0.486</td><td class="num">0.999</td><td class="num best">1.000</td><td class="num">0.386</td><td class="num">0.600</td><td class="num">0.702</td><td class="num">0.4</td></tr><tr><th scope="row"><code>threshold-0.45</code><span class="cfg">bm25, chunk 120/30 sentence</span></th><td class="num best">0.957</td><td class="num best">0.989</td><td class="num best">0.959</td><td class="num best">0.486</td><td class="num">0.998</td><td class="num best">1.000</td><td class="num">0.452</td><td class="num best">1.000</td><td class="num">0.425</td><td class="num">0.4</td></tr><tr><th scope="row"><code>threshold-0.60</code><span class="cfg">bm25, chunk 120/30 sentence</span></th><td class="num best">0.957</td><td class="num best">0.989</td><td class="num best">0.959</td><td class="num best">0.486</td><td class="num">0.996</td><td class="num best">1.000</td><td class="num best">0.497</td><td class="num best">1.000</td><td class="num">0.213</td><td class="num">0.3</td></tr></tbody>
+  </table></div>
+</main></body></html>

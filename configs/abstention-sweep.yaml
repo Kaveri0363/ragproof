@@ -1,0 +1,31 @@
+# Coverage versus safety. The abstain threshold is the fraction of a question's
+# content words that must appear in the best retrieved sentence before the
+# system is willing to answer at all.
+#
+# Raise it and the system stops making things up on questions the corpus cannot
+# answer (abstain_accuracy ↑) — and starts refusing questions it could have
+# answered (answer_rate ↓). There is no correct value, only a chosen point on
+# the curve, and the right one differs for a compliance workflow and a search
+# box. This config is how that point gets chosen with evidence.
+
+name: abstention-sweep
+corpus: ../data/corpus
+dataset: ../data/qa.jsonl
+k: 3
+retrieval_depth: 20
+
+defaults:
+  chunking: { strategy: sentence, size: 120, overlap: 30 }
+  retriever: { kind: bm25 }
+
+systems:
+  - name: threshold-0.15
+    generator: { kind: extractive, abstain_threshold: 0.15 }
+  - name: threshold-0.25
+    generator: { kind: extractive, abstain_threshold: 0.25 }
+  - name: threshold-0.34
+    generator: { kind: extractive, abstain_threshold: 0.34 }
+  - name: threshold-0.45
+    generator: { kind: extractive, abstain_threshold: 0.45 }
+  - name: threshold-0.60
+    generator: { kind: extractive, abstain_threshold: 0.60 }

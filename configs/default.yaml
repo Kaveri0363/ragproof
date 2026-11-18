@@ -1,0 +1,51 @@
+# The headline experiment: six pipeline variants over the same corpus and the
+# same labelled questions. Everything a variant changes is one line below —
+# which is the point. Comparisons are only meaningful when one thing moves.
+
+name: default
+corpus: ../data/corpus
+dataset: ../data/qa.jsonl
+k: 3
+retrieval_depth: 20
+
+defaults:
+  chunking: { strategy: sentence, size: 120, overlap: 30 }
+  retriever: { kind: bm25 }
+  reranker: { kind: none }
+  generator: { kind: extractive, max_sentences: 2, abstain_threshold: 0.25 }
+  judge: { kind: overlap }
+
+systems:
+  - name: bm25-baseline
+    notes: sparse lexical retrieval, sentence-aware chunks
+
+  - name: bm25-small-chunks
+    chunking: { size: 60, overlap: 15 }
+    notes: smaller chunks — higher precision, more boundary loss
+
+  - name: bm25-fixed-chunks
+    chunking: { strategy: fixed, size: 120, overlap: 30 }
+    notes: same size, naive windowing — isolates the cost of cutting sentences
+
+  - name: dense-hashing
+    retriever: { kind: dense, embedder: { kind: hashing, dim: 1024, bigrams: true } }
+    notes: deterministic hashed TF-IDF embeddings, cosine similarity
+
+  - name: hybrid-rrf
+    retriever:
+      kind: hybrid
+      rrf_k: 60
+      retrievers:
+        - { kind: bm25 }
+        - { kind: dense, embedder: { kind: hashing, dim: 1024 } }
+    notes: reciprocal rank fusion of sparse and dense
+
+  - name: hybrid-rrf-reranked
+    retriever:
+      kind: hybrid
+      rrf_k: 60
+      retrievers:
+        - { kind: bm25 }
+        - { kind: dense, embedder: { kind: hashing, dim: 1024 } }
+    reranker: { kind: lexical }
+    notes: fusion plus a second-stage reranker over the top 20 candidates
