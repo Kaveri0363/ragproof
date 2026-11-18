@@ -14,8 +14,13 @@ It runs end to end in about two seconds with no API key, no model download and n
 the numbers below reproduce exactly on a clean clone.
 
 ```bash
-pip install -e ".[dev]"
+git clone https://github.com/Kaveri0363/ragproof.git
+cd ragproof
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m pip install -e ".[dev]"
 ragproof eval --config configs/default.yaml
+
 ```
 
 ---
